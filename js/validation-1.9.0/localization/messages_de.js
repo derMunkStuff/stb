@@ -3,7 +3,7 @@
  * Locale: DE
  */
 jQuery.extend(jQuery.validator.messages, {
-	required: "Dieses Feld ist ein Pflichtfeld.",
+	required: "Bitte ausfüllen!",
 	maxlength: jQuery.validator.format("Geben Sie bitte maximal {0} Zeichen ein."),
 	minlength: jQuery.validator.format("Geben Sie bitte mindestens {0} Zeichen ein."),
 	rangelength: jQuery.validator.format("Geben Sie bitte mindestens {0} und maximal {1} Zeichen ein."),
