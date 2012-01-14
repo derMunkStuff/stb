@@ -14,10 +14,7 @@
     $("#insertForm").validate({
 			rules: {
 				ltbuhrzeit: {
-					required:true,
-					minlength:3,
-					maxlength:15,
-					number:true	
+					required:true
 				}
 			}
 	});
@@ -26,7 +23,7 @@
 </head>
 <?php	
 include_once('config.php');						 
-
+include_once('functions/functions_th.php');
 // Sportarten auflisten
 $listSpa = "";
 $querySpa = sprintf("SELECT * FROM " . $curCMS['dbPrefix'] . "stb_sportarten
@@ -127,18 +124,48 @@ $form = "<form action=\"".$_SERVER['PHP_SELF']."\" method=\"post\" id=\"insertFo
 					<input name=\"ltbCancel\" type=\"submit\" value=\"Abbrechen\" class=\"schaltflaeche\" /></div>
 				</form></div>";
 
+
+
 if(!isset($_POST['ltbSenden'])&& $_POST['ltbdatum'] !="");
 	
-	echo $form;
+echo $form;
+$ltblaufzeit = ($_POST['ltbhour']*3600)+($_POST['ltbmin']*60)+($_POST['ltbsec']);
 
 
 if($_POST['ltbSenden']){
+				$varSQL = array();
+			foreach($_POST as $key=>$val){
+				$varSQL[$key] = magicquotes($val);
+			}
+	
 $query = sprintf("INSERT INTO " . $curCMS['dbPrefix'] . "stb_test_basis_daten
-		(basis_datum, basis_uhrzeit, basis_km, id_spa, basis_laufzeit, id_schuh, id_belastung, basis_av, basis_mx, basis_witterung, basis_temp, id_stre, basis_gewicht, basis_fett, basis_schlaf, basis_motivation, basis_zufriedenheit, basis_bemerkungen)
-		
-		VALUES('".$_POST['ltbdatum']."','".$_POST['ltbuhrzeit']."','".$_POST['ltbkm']."','".$_POST['ltbspa']."','".$_POST['$ltblaufzeit']."','".$_POST['ltbshoe']."','".$_POST['ltbbelastung']."','".$_POST['ltbav']."','".$_POST['ltbmx']."','".$_POST['ltbwitterung']."','".$_POST['ltbtmp']."','".$_POST['ltbstre']."','".$_POST['ltbgewicht']."','".$_POST['ltbfett']."','".$_POST['ltbschlaf']."','".$_POST['ltbmotivation']."','".$_POST['ltbzufrieden']."','".$_POST['ltbbemerk']."')");
+		(basis_datum, basis_uhrzeit, basis_km, id_spa, basis_laufzeit, id_schuh, id_belastung, basis_av, basis_mx, basis_witterung, basis_temp, strecke, basis_gewicht, basis_fett, basis_schlaf, basis_motivation, basis_zufriedenheit, basis_bemerkungen, create_at, create_from, change_at, change_from)
+		VALUES
+				('%1\$d', '%2\$d', '%3\$f', '%4\$d', '%5\$d', '%6\$d', '%7\$d', '%8\$d', '%9\$d', '%10\$d', '%11\$f', '%12\$s', '%13\$f', '%14\$f', '%15\$d', '%16\$d', '%17\$d', '%18\$s', '%19\$d',  '%20\$d', '%19\$d', '%20\$d')
+				", 
+				 mysql_real_escape_string(strtotime($varSQL['ltbdatum'])),
+				 mysql_real_escape_string(strtotime($varSQL['ltbuhrzeit'])),
+				 mysql_real_escape_string(str_replace(",",".",$varSQL['ltbkm'])),
+				 mysql_real_escape_string($varSQL['ltbspa']),
+				 mysql_real_escape_string($ltblaufzeit),
+				 mysql_real_escape_string($varSQL['ltbshoe']),
+				 mysql_real_escape_string($varSQL['ltbbelastung']),
+				 mysql_real_escape_string($varSQL['ltbav']),
+				 mysql_real_escape_string($varSQL['ltbmx']),
+				 mysql_real_escape_string($varSQL['ltbwitterung']),
+				 mysql_real_escape_string(str_replace(",",".",$varSQL['ltbtmp'])),
+				 mysql_real_escape_string($varSQL['ltbstre']),
+				 mysql_real_escape_string(str_replace(",",".",$varSQL['ltbgewicht'])),
+				 mysql_real_escape_string(str_replace(",",".",$varSQL['ltbfett'])),
+				 mysql_real_escape_string($varSQL['ltbschlaf']),
+				 mysql_real_escape_string($varSQL['ltbmotivation']),
+				 mysql_real_escape_string($varSQL['ltbzufrieden']),
+				 mysql_real_escape_string(nl2br($varSQL['ltbbemerk'])),
+				 mysql_real_escape_string(time()),
+				 mysql_real_escape_string($_SESSION['stbUID'])
+				 );
 
-echo $query;
+//echo $query;
 $result = mysqli_query($db, $query);
 
 echo "Daten gespeichert";	
