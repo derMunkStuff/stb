@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="js/jqGrid-4.3.1/css/ui.jqgrid.css" />
     <link rel="stylesheet" href="css/styles.css" />  
     
-	<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="js/jqGrid-4.3.1/js/jquery-1.5.2.min.js"></script>
 	<script type="text/javascript" src="js/xmldom/jquery.xmldom-1.0.min.js"></script> 
 	<script type="text/javascript" src="js/jqGrid-4.3.1/js/i18n/grid.locale-de.js"></script>
 	<script type="text/javascript" src="js/jqGrid-4.3.1/js/jquery.jqGrid.min.js"></script> 
