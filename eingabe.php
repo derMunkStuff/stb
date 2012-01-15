@@ -5,21 +5,32 @@
 	<title>Sporttagebuch-2012</title>
     <link rel="stylesheet" href="js/jquery-ui-1.8.16.custom/css/pepper-grinder/jquery-ui-1.8.16.custom.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script> 
+    <script type="text/javascript" src="js/jqGrid-4.3.1/js/jquery-1.5.2.min.js"></script> 
     <script type="text/javascript" src="js/validation-1.9.0/jquery.validate.min.js"></script>
     <script src="js/validation-1.9.0/localization/messages_de.js" type="text/javascript"></script>
     <script type="text/javascript" src="js/jquery-ui-1.8.16.custom/js/jquery-ui-1.8.16.custom.min.js"></script>
-     <script>
-  $(document).ready(function(){
-    $("#insertForm").validate({
-			rules: {
-				ltbuhrzeit: {
-					required:true
+    
+    
+   <script type="text/javascript">
+	  $(document).ready(function(){
+	    $("#insertForm").validate({
+				rules: {
+					ltbuhrzeit: {
+						required:true
+					}
 				}
-			}
-	});
-  });
-  </script> 
+		});
+	  });
+  </script>
+  <script type="text/javascript">
+  		  $(document).ready(function() {
+								$("#datepicker").datepicker({
+									 dateFormat: 'dd.mm.yy',
+									 dayNames: ["Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"],
+									 dayNamesMin: ['So','Mo','Di','Mi','Do','Fr','Sa'], monthNames: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember']							
+								
+							  });
+});					  </script> 
 </head>
 <?php	
 include_once('config.php');						 

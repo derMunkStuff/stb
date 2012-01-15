@@ -14,6 +14,7 @@
 	<script type="text/javascript" src="js/jqGrid-4.3.1/js/i18n/grid.locale-de.js"></script>
 	<script type="text/javascript" src="js/jqGrid-4.3.1/js/jquery.jqGrid.min.js"></script> 
 	<script type="text/javascript" src="js/jquery-ui-1.8.16.custom/js/jquery-ui-1.8.16.custom.min.js"></script>
+	
 	<script type="text/javascript"> 
 					$(document).ready(function(){
 					$('#basis').jqGrid({
@@ -36,7 +37,7 @@
 							{name:'basis_fett',index:'basis_fett'},
 							{name:'basis_bemerkungen',index:'basis_bemerkungen'}
 							],
-						rowNum:10,
+						rowNum:20,
 						autowidth: true,
 						shrinkToFit: true,
 						cellLayout: 10,
