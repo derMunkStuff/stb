@@ -17,7 +17,7 @@ function pace($sec, $km){
 
 
 /*==================================================================================*/	
- function magicquotes($var){
+function magicquotes($var){
 	if(get_magic_quotes_gpc()){
 		$mgVAR = "";
 	if(!is_array($var)) $mgVAR = stripslashes($var);

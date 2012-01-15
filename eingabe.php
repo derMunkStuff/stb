@@ -3,8 +3,11 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Sporttagebuch-2012</title>
-    <link rel="stylesheet" href="js/jquery-ui-1.8.16.custom/css/pepper-grinder/jquery-ui-1.8.16.custom.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="js/jquery-ui-1.8.16.custom/css/pepper-grinder/jquery-ui-1.8.16.custom.css" />
+    
+    <link rel="stylesheet" href="js/jqGrid-4.3.1/css/ui.jqgrid.css" />
+    
     <script type="text/javascript" src="js/jqGrid-4.3.1/js/jquery-1.5.2.min.js"></script> 
     <script type="text/javascript" src="js/validation-1.9.0/jquery.validate.min.js"></script>
     <script src="js/validation-1.9.0/localization/messages_de.js" type="text/javascript"></script>
@@ -66,9 +69,9 @@ while($datSpa = mysqli_fetch_array($resShoe)){
 
 	
 
-$form = "<form action=\"".$_SERVER['PHP_SELF']."\" method=\"post\" id=\"insertForm\">
-					<fieldset>
-						<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" >
+$form = "<form action=\"".$_SERVER['PHP_SELF']."\" method=\"post\" id=\"insertForm\" class=\"ui-widget ui-widget-content ui-menu\">
+					
+						<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"id=\"tableForm\" >
 							<tr>
 								<th><label for=\"ltbdatum\" id=\"\">Datum</label></th>
                             	<td><input type=\"text\" name=\"ltbdatum\" id=\"datepicker\" value=\"\"  /></td>                             
@@ -130,7 +133,7 @@ $form = "<form action=\"".$_SERVER['PHP_SELF']."\" method=\"post\" id=\"insertFo
                                     <td><label for=\"ltbbemerk\"><textarea name=\"ltbbemerk\" id=\"ltbbemerk\" class=\"textxl\"></textarea></label></td>
                             </tr>			
 					</table>
-				</fieldset>
+				
 					<div style=\"margin-left: 30px\"><input name=\"ltbSenden\" type=\"submit\" value=\"Speichern\" class=\"schaltflaeche\" />
 					<input name=\"ltbCancel\" type=\"submit\" value=\"Abbrechen\" class=\"schaltflaeche\" /></div>
 				</form></div>";
