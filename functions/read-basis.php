@@ -2,6 +2,14 @@
 include_once("../config.php");
 
 
+
+
+
+
+
+
+
+
 $query = sprintf("SELECT * FROM stb_test_basis_daten 
 					WHERE del='0'
 					"
