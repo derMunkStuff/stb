@@ -1,5 +1,6 @@
 <?php
 include_once("../config.php");
+include_once("../functions/functions_th.php");
 
 
 
@@ -10,7 +11,7 @@ include_once("../config.php");
 
 
 
-$query = sprintf("SELECT * FROM stb_test_basis_daten 
+$query = sprintf("SELECT * FROM stb_basis_daten 
 					WHERE del='0'
 					"
 					);
@@ -32,10 +33,10 @@ while($row = mysqli_fetch_array($result)) {
 	echo "<row id='". $row['id_basis']."'>";			
 	echo "<id_basis><![CDATA[". $row['id_basis']."]]></id_basis>";
 	echo "<basis_datum><![CDATA[". date("d.m.Y",$row['basis_datum'])."]]></basis_datum>";
-	echo "<basis_uhrzeit><![CDATA[". date("d.m.Y",$row['basis_uhrzeit'])."]]></basis_uhrzeit>";
+	echo "<basis_uhrzeit><![CDATA[". hms($row['basis_uhrzeit'])."]]></basis_uhrzeit>";
 	echo "<basis_km><![CDATA[". $row['basis_km']."]]></basis_km>";
 	echo "<id_spa><![CDATA[". $row['id_spa']."]]></id_spa>";
-	echo "<basis_laufzeit><![CDATA[". $row['basis_laufzeit']."]]></basis_laufzeit>";
+	echo "<basis_laufzeit><![CDATA[". hms($row['basis_laufzeit'])."]]></basis_laufzeit>";
 	echo "<id_schuh><![CDATA[". $row['id_schuh']."]]></id_schuh>";
 	echo "<basis_av><![CDATA[". $row['basis_av']."]]></basis_av>";
 	echo "<basis_mx><![CDATA[". $row['basis_mx']."]]></basis_mx>";

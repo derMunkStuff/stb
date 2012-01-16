@@ -1,0 +1,25 @@
+<?php
+####################################################################
+include_once('de.php');
+ini_set("display_errors", "Off");
+//ini_set("error_reporting", 2047);
+
+// Path to hostdiretory (absolut from web-server-root)
+$stbSITE['hostPath'] = "";
+
+// Connecting for database
+$stbDB['host'] = '';
+$stbDB['user'] = '';
+$stbDB['passw'] = '';
+$stbDB['database'] = '';
+
+
+$db = mysqli_connect($stbDB['host'],$stbDB['user'],$stbDB['passw'], $stbDB['database'])
+	or die('Fehler');
+//$mysql = mysql_connect( $stbDB['host'], $stbDB['user'], $stbDB['passw'] );
+//mysql_select_db($stbDB['database'], $mysql);
+
+//Präfix for database
+$stbSITE['dbPrefix'] = 'stb_';
+
+?>
